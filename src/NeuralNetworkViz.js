@@ -351,9 +351,9 @@ const NetworkViz = () => {
 }, [dataPattern, hiddenUnits, learningRate]);
 
   return (
-    <div className="w-full max-w-6xl mx-auto p-6 space-y-6">
+    <div className="w-full max-w-6xl mx-auto p-6 space-y-6 bg-gray-900 text-gray-100">
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Binary Classification with Neural Network</h1>
+        <h1 className="text-2xl font-bold text-white">Binary Classification with Neural Network</h1>
         <div className="flex items-center space-x-4">
           <select
             value={dataPattern}
@@ -367,8 +367,8 @@ const NetworkViz = () => {
               setTrainingData(newData);
               setEpoch(0);
               setLoss(0);
-          }}
-            className="px-3 py-2 border rounded"
+            }}
+            className="px-3 py-2 bg-gray-800 border border-gray-700 rounded text-gray-100"
           >
             <option value="linear">Linear</option>
             <option value="circular">Circular</option>
@@ -377,114 +377,113 @@ const NetworkViz = () => {
           </select>
           <button
             onClick={() => setIsTraining(!isTraining)}
-            className="inline-flex items-center px-4 py-2 rounded bg-blue-500 text-white hover:bg-blue-600"
+            className="inline-flex items-center px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition-colors"
           >
             {isTraining ? <Square className="w-4 h-4 mr-2" /> : <Play className="w-4 h-4 mr-2" />}
             {isTraining ? 'Stop' : 'Train'}
           </button>
           <button
             onClick={handleReset}
-            className="inline-flex items-center px-4 py-2 rounded bg-gray-500 text-white hover:bg-gray-600"
+            className="inline-flex items-center px-4 py-2 rounded bg-gray-700 text-white hover:bg-gray-600 transition-colors"
           >
             <RotateCcw className="w-4 h-4 mr-2" />
             Reset
           </button>
         </div>
       </div>
-            {/* Add control panel */}
-      {/* Control panel */}
-<div className="bg-white p-4 rounded-lg shadow">
-  <h2 className="text-lg font-semibold mb-4">Network Parameters</h2>
-  <div className="grid grid-cols-3 gap-4">
-    <div>
-      <label className="block text-sm font-medium text-gray-700">
-        Hidden Units: {hiddenUnits}
-        <input
-          type="range"
-          min="4"
-          max="20"
-          value={hiddenUnits}
-          onChange={(e) => {
-            const newUnits = parseInt(e.target.value);
-            setHiddenUnits(newUnits);
-            // Reset network with new architecture
-            setIsTraining(false);
-            const nn = new SimpleNN(newUnits, learningRate);
-            const newData = dataGenerators[dataPattern]();
-            nn.setTrainingData(newData);
-            setNetwork(nn);
-            setTrainingData(newData);
-            setWeights({
-              inputHidden: [
-                Array(newUnits).fill().map(() => 0.1),
-                Array(newUnits).fill().map(() => 0.1)
-              ],
-              hiddenOutput: Array(newUnits).fill().map(() => 0.1)
-            });
-            setEpoch(0);
-            setLoss(0);
-          }}
-          className="w-full mt-1"
-        />
-      </label>
-    </div>
-    <div>
-      <label className="block text-sm font-medium text-gray-700">
-        Learning Rate: {learningRate.toFixed(3)}
-        <input
-          type="range"
-          min="0.001"
-          max="0.5"
-          step="0.001"
-          value={learningRate}
-          onChange={(e) => {
-            const newRate = parseFloat(e.target.value);
-            setLearningRate(newRate);
-            network.learningRate = newRate;
-          }}
-          className="w-full mt-1"
-        />
-      </label>
-    </div>
-    <div>
-      <label className="block text-sm font-medium text-gray-700">
-        Activation Function
-        <select
-          value={network.useRelu ? 'relu' : 'sigmoid'}
-          onChange={(e) => {
-            const nn = new SimpleNN(hiddenUnits, learningRate);
-            nn.useRelu = e.target.value === 'relu';
-            const newData = dataGenerators[dataPattern]();
-            nn.setTrainingData(newData);
-            setNetwork(nn);
-            setTrainingData(newData);
-            setEpoch(0);
-            setLoss(0);
-            setIsTraining(false);
-          }}
-          className="w-full mt-1 px-3 py-2 border rounded"
-        >
-          <option value="relu">ReLU</option>
-          <option value="sigmoid">Sigmoid</option>
-        </select>
-      </label>
-    </div>
-  </div>
-  
-  <div className="mt-4 text-sm text-gray-600">
-    <p>Recommended settings for different patterns:</p>
-    <ul className="list-disc pl-5 mt-2">
-      <li>Linear: 4-6 hidden units, learning rate 0.1, Sigmoid</li>
-      <li>Circular: 10-15 hidden units, learning rate 0.1, ReLU</li>
-      <li>XOR: 8-10 hidden units, learning rate 0.1, ReLU</li>
-      <li>Spiral: 15-20 hidden units, learning rate 0.05, ReLU</li>
-    </ul>
-  </div>
-</div>
+
+      <div className="bg-gray-800 p-4 rounded-lg shadow-lg border border-gray-700">
+        <h2 className="text-lg font-semibold mb-4 text-white">Network Parameters</h2>
+        <div className="grid grid-cols-3 gap-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-300">
+              Hidden Units: {hiddenUnits}
+              <input
+                type="range"
+                min="4"
+                max="20"
+                value={hiddenUnits}
+                onChange={(e) => {
+                  const newUnits = parseInt(e.target.value);
+                  setHiddenUnits(newUnits);
+                  setIsTraining(false);
+                  const nn = new SimpleNN(newUnits, learningRate);
+                  const newData = dataGenerators[dataPattern]();
+                  nn.setTrainingData(newData);
+                  setNetwork(nn);
+                  setTrainingData(newData);
+                  setWeights({
+                    inputHidden: [
+                      Array(newUnits).fill().map(() => 0.1),
+                      Array(newUnits).fill().map(() => 0.1)
+                    ],
+                    hiddenOutput: Array(newUnits).fill().map(() => 0.1)
+                  });
+                  setEpoch(0);
+                  setLoss(0);
+                }}
+                className="w-full mt-1 bg-gray-700 rounded-lg appearance-none cursor-pointer"
+              />
+            </label>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-300">
+              Learning Rate: {learningRate.toFixed(3)}
+              <input
+                type="range"
+                min="0.001"
+                max="0.5"
+                step="0.001"
+                value={learningRate}
+                onChange={(e) => {
+                  const newRate = parseFloat(e.target.value);
+                  setLearningRate(newRate);
+                  network.learningRate = newRate;
+                }}
+                className="w-full mt-1 bg-gray-700 rounded-lg appearance-none cursor-pointer"
+              />
+            </label>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-300">
+              Activation Function
+              <select
+                value={network.useRelu ? 'relu' : 'sigmoid'}
+                onChange={(e) => {
+                  const nn = new SimpleNN(hiddenUnits, learningRate);
+                  nn.useRelu = e.target.value === 'relu';
+                  const newData = dataGenerators[dataPattern]();
+                  nn.setTrainingData(newData);
+                  setNetwork(nn);
+                  setTrainingData(newData);
+                  setEpoch(0);
+                  setLoss(0);
+                  setIsTraining(false);
+                }}
+                className="w-full mt-1 px-3 py-2 bg-gray-700 border border-gray-600 rounded text-gray-100"
+              >
+                <option value="relu">ReLU</option>
+                <option value="sigmoid">Sigmoid</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        
+        <div className="mt-4 text-sm text-gray-400">
+          <p>Recommended settings for different patterns:</p>
+          <ul className="list-disc pl-5 mt-2">
+            <li>Linear: 4-6 hidden units, learning rate 0.1, Sigmoid</li>
+            <li>Circular: 10-15 hidden units, learning rate 0.1, ReLU</li>
+            <li>XOR: 8-10 hidden units, learning rate 0.1, ReLU</li>
+            <li>Spiral: 15-20 hidden units, learning rate 0.05, ReLU</li>
+          </ul>
+        </div>
+      </div>
+
       <div className="grid grid-cols-2 gap-6">
-        <div className="bg-white p-4 rounded-lg shadow">
-          <h2 className="text-lg font-semibold mb-4">Classification Problem</h2>
-          <div className="mb-4 text-sm text-gray-600">
+        <div className="bg-gray-800 p-4 rounded-lg shadow-lg border border-gray-700">
+          <h2 className="text-lg font-semibold mb-4 text-white">Classification Problem</h2>
+          <div className="mb-4 text-sm text-gray-400">
             <p>Binary classification of two clusters:</p>
             <ul className="list-disc pl-5 mt-2">
               <li>Class 0 (Blue): Centered around (-0.5, -0.5)</li>
@@ -492,14 +491,14 @@ const NetworkViz = () => {
             </ul>
             <p className="mt-2">Task: Learn to separate the two classes</p>
           </div>
-          <svg width="300" height="300" className="border border-gray-200">
+          <svg width="300" height="300" className="border border-gray-700">
             <DecisionBoundary 
               network={network}
               width={300}
               height={300}
             />
-            <line x1="0" y1="150" x2="300" y2="150" stroke="gray" strokeWidth="1" opacity="0.5" />
-            <line x1="150" y1="0" x2="150" y2="300" stroke="gray" strokeWidth="1" opacity="0.5" />
+            <line x1="0" y1="150" x2="300" y2="150" stroke="#4B5563" strokeWidth="1" opacity="0.5" />
+            <line x1="150" y1="0" x2="150" y2="300" stroke="#4B5563" strokeWidth="1" opacity="0.5" />
             
             {trainingData.map((point, i) => (
               <circle
@@ -513,97 +512,94 @@ const NetworkViz = () => {
           </svg>
         </div>
 
-        <div className="bg-white p-4 rounded-lg shadow">
-          <h2 className="text-lg font-semibold mb-4">Neural Network</h2>
+        <div className="bg-gray-800 p-4 rounded-lg shadow-lg border border-gray-700">
+          <h2 className="text-lg font-semibold mb-4 text-white">Neural Network</h2>
           <svg width="400" height="300">
             {/* Input Layer */}
             <g transform="translate(50,100)">
-              <circle r="20" fill="white" stroke="black" />
-              <text textAnchor="middle" dy=".3em">x₁</text>
+              <circle r="20" fill="#1F2937" stroke="#4B5563" />
+              <text textAnchor="middle" dy=".3em" fill="#E5E7EB">x₁</text>
             </g>
             <g transform="translate(50,200)">
-              <circle r="20" fill="white" stroke="black" />
-              <text textAnchor="middle" dy=".3em">x₂</text>
+              <circle r="20" fill="#1F2937" stroke="#4B5563" />
+              <text textAnchor="middle" dy=".3em" fill="#E5E7EB">x₂</text>
             </g>
 
             {/* Hidden Layer */}
             {Array(hiddenUnits).fill(0).map((_, i) => {
-              // Calculate vertical spacing based on number of units
-              const totalHeight = 280; // Leave some margin
+              const totalHeight = 280;
               const spacing = totalHeight / (hiddenUnits + 1);
               const yPos = 20 + spacing * (i + 1);
               
               return (
                 <g key={i} transform={`translate(200,${yPos})`}>
-                  <circle r="20" fill="white" stroke="black" />
-                  <text textAnchor="middle" dy=".3em">h{i+1}</text>
+                  <circle r="20" fill="#1F2937" stroke="#4B5563" />
+                  <text textAnchor="middle" dy=".3em" fill="#E5E7EB">h{i+1}</text>
                 </g>
               );
             })}
 
             {/* Output Layer */}
             <g transform="translate(350,150)">
-              <circle r="20" fill="white" stroke="black" />
-              <text textAnchor="middle" dy=".3em">y</text>
+              <circle r="20" fill="#1F2937" stroke="#4B5563" />
+              <text textAnchor="middle" dy=".3em" fill="#E5E7EB">y</text>
             </g>
 
-{/* Connections */}
-{weights.inputHidden.map((row, i) => 
-  row.map((weight, j) => {
-    // Calculate the vertical position of the hidden layer node
-    const totalHeight = 280;
-    const spacing = totalHeight / (hiddenUnits + 1);
-    const hiddenY = 20 + spacing * (j + 1);
+            {/* Connections */}
+            {weights.inputHidden.map((row, i) => 
+              row.map((weight, j) => {
+                const totalHeight = 280;
+                const spacing = totalHeight / (hiddenUnits + 1);
+                const hiddenY = 20 + spacing * (j + 1);
 
-    return (
-      <line 
-        key={`ih-${i}-${j}`}
-        x1="70" 
-        y1={100 + i * 100}  // Input layer position
-        x2="180" 
-        y2={hiddenY}        // Updated hidden layer position
-        stroke={weight > 0 ? 'blue' : 'red'}
-        strokeWidth={Math.abs(weight) * 3}
-        opacity={0.5}
-      />
-    );
-  })
-)}
+                return (
+                  <line 
+                    key={`ih-${i}-${j}`}
+                    x1="70" 
+                    y1={100 + i * 100}
+                    x2="180" 
+                    y2={hiddenY}
+                    stroke={weight > 0 ? '#3B82F6' : '#EF4444'}
+                    strokeWidth={Math.abs(weight) * 3}
+                    opacity={0.5}
+                  />
+                );
+              })
+            )}
 
-{weights.hiddenOutput.map((weight, i) => {
-  // Calculate the vertical position of the hidden layer node
-  const totalHeight = 280;
-  const spacing = totalHeight / (hiddenUnits + 1);
-  const hiddenY = 20 + spacing * (i + 1);
+            {weights.hiddenOutput.map((weight, i) => {
+              const totalHeight = 280;
+              const spacing = totalHeight / (hiddenUnits + 1);
+              const hiddenY = 20 + spacing * (i + 1);
 
-  return (
-    <line 
-      key={`ho-${i}`}
-      x1="220" 
-      y1={hiddenY}      // Fixed: changed y2 to y1
-      x2="330" 
-      y2="150"          // Output layer position
-      stroke={weight > 0 ? 'blue' : 'red'}
-      strokeWidth={Math.abs(weight) * 3}
-      opacity={0.5}
-    />
-  );
-})}
+              return (
+                <line 
+                  key={`ho-${i}`}
+                  x1="220" 
+                  y1={hiddenY}
+                  x2="330" 
+                  y2="150"
+                  stroke={weight > 0 ? '#3B82F6' : '#EF4444'}
+                  strokeWidth={Math.abs(weight) * 3}
+                  opacity={0.5}
+                />
+              );
+            })}
           </svg>
         </div>
       </div>
 
-      <div className="bg-white p-4 rounded-lg shadow">
+      <div className="bg-gray-800 p-4 rounded-lg shadow-lg border border-gray-700">
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <h3 className="font-semibold mb-2">Training Progress</h3>
-            <div>Epoch: {epoch}</div>
-            <div>Loss: {loss.toFixed(4)}</div>
-            <div>Status: {isTraining ? 'Training' : 'Stopped'}</div>
+            <h3 className="font-semibold mb-2 text-white">Training Progress</h3>
+            <div className="text-gray-300">Epoch: {epoch}</div>
+            <div className="text-gray-300">Loss: {loss.toFixed(4)}</div>
+            <div className="text-gray-300">Status: {isTraining ? 'Training' : 'Stopped'}</div>
           </div>
           <div>
-            <h3 className="font-semibold mb-2">Network Weights</h3>
-            <div className="text-sm">
+            <h3 className="font-semibold mb-2 text-white">Network Weights</h3>
+            <div className="text-sm text-gray-400">
               <div>Input→Hidden:</div>
               {weights.inputHidden.map((row, i) => (
                 <div key={i}>

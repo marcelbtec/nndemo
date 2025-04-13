@@ -3,7 +3,7 @@ import NeuralNetworkViz from './NeuralNetworkViz';
 
 function App() {
   return (
-    <div className="App">
+    <div className="min-h-screen bg-gray-900">
       <div className="absolute top-4 right-4">
         <a 
           href="/docs/index.html" 
