@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Network Demo - Documentation</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #F3F4F6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .section {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1F2937;
+            margin-bottom: 1rem;
+        }
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #374151;
+            margin-bottom: 1rem;
+        }
+        p {
+            color: #4B5563;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        ul, ol {
+            color: #4B5563;
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+        .back-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: #3B82F6;
+            color: white;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+        .back-button:hover {
+            background-color: #2563EB;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Neural Network Visualization Demo</h1>
+        
+        <p class="text-xl text-gray-700 mb-8">This interactive demo provides a hands-on exploration of how neural networks learn to classify data. Through visual feedback and real-time updates, you'll gain an intuitive understanding of the fundamental concepts behind neural network training and decision-making processes.</p>
+
+        <div class="section">
+            <h2>The Classification Problem</h2>
+            <p>At its core, this demo tackles a fundamental machine learning task: binary classification in a two-dimensional space. The neural network is presented with a set of points, each belonging to one of two classes (represented by blue and red colors). The network's objective is to learn a decision boundary that effectively separates these classes. This seemingly simple task demonstrates the core principles of how neural networks learn to make decisions and generalize from examples.</p>
+        </div>
+
+        <div class="section">
+            <h2>Network Architecture</h2>
+            <p>The neural network has a carefully designed structure that balances simplicity with learning capability:</p>
+            <ul>
+                <li>2 input neurons (x₁, x₂) that receive the coordinates of each point in the 2D space. These serve as the network's "eyes" to perceive the input data.</li>
+                <li>A hidden layer with a configurable number of neurons that performs the actual learning and pattern recognition. Each neuron in this layer can learn different aspects of the decision boundary.</li>
+                <li>1 output neuron (y) that produces the final prediction, indicating which class (blue or red) the network believes the input point belongs to. The output is typically a value between 0 and 1, representing the confidence of the prediction.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>How to Use the Demo</h2>
+            <ol>
+                <li>
+                    <strong>Choose a Dataset</strong>
+                    <ul>
+                        <li>Linear: A straightforward dataset where points are separated by a straight line. This is the simplest case and helps understand basic learning principles.</li>
+                        <li>Circular: Points arranged in concentric circles, requiring the network to learn a non-linear decision boundary. This demonstrates the network's ability to learn curved separations.</li>
+                        <li>XOR: A classic non-linear problem where points are arranged in an XOR pattern. This dataset is particularly interesting as it cannot be solved by a single-layer network, showcasing the importance of hidden layers.</li>
+                        <li>Spiral: A complex pattern where points wind around each other in a spiral. This is the most challenging dataset and demonstrates the network's capacity to learn intricate decision boundaries.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Adjust Network Parameters</strong>
+                    <ul>
+                        <li>Hidden Units: Controls the number of neurons in the hidden layer. More units allow the network to learn more complex patterns but may lead to overfitting. Fewer units promote simpler solutions but may struggle with complex patterns.</li>
+                        <li>Learning Rate: Determines how quickly the network adjusts its weights during training. A higher rate leads to faster learning but may cause instability. A lower rate provides more stable but slower learning.</li>
+                        <li>Activation Function: Choose between ReLU (Rectified Linear Unit) and Sigmoid. ReLU often provides faster learning and better performance for deep networks, while Sigmoid is more traditional and produces smoother outputs.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Training</strong>
+                    <ul>
+                        <li>Click "Train" to initiate the learning process. The network will begin adjusting its weights to minimize prediction errors.</li>
+                        <li>Watch the decision boundary evolve in real-time as the network learns. The colored regions show the network's current understanding of class separation.</li>
+                        <li>Monitor the loss value (prediction error) and epoch count. The loss should decrease over time as the network improves its predictions.</li>
+                        <li>Click "Stop" to pause training at any point. This is useful for examining the network's current state or making parameter adjustments.</li>
+                        <li>Click "Reset" to reinitialize the network with random weights. This is helpful when you want to start fresh or compare different training runs.</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2>What to Observe</h2>
+            <ul>
+                <li>The decision boundary (colored region) visualizes how the network separates the classes. Watch how it evolves from a random initial state to a meaningful separation of the data points.</li>
+                <li>The network visualization shows the weights between neurons as colored lines. These weights represent the strength and direction of connections between neurons.</li>
+                <li>Blue lines indicate positive weights, suggesting that an increase in the input neuron's value will increase the output neuron's activation.</li>
+                <li>Red lines represent negative weights, indicating that an increase in the input neuron's value will decrease the output neuron's activation.</li>
+                <li>Thicker lines indicate stronger weights, showing which connections are more influential in the network's decision-making process.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Learning Process</h2>
+            <p>The network learns through a continuous cycle of prediction and adjustment:</p>
+            <ol>
+                <li>Forward pass: The network processes each input point through its layers, making predictions about which class it belongs to. This involves multiplying inputs by weights, summing the results, and applying activation functions.</li>
+                <li>Calculating loss: The network measures how far its predictions are from the true class labels using the Mean Squared Error function. This provides a quantitative measure of the network's performance.</li>
+                <li>Backpropagation: The network calculates how each weight contributed to the error and adjusts them accordingly. This is done using the chain rule of calculus to efficiently compute the necessary adjustments.</li>
+                <li>Repeating the process: The network continues this cycle, gradually improving its predictions until the decision boundary effectively separates the classes or reaches a satisfactory level of accuracy.</li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2>Tips for Different Datasets</h2>
+            <ul>
+                <li>Linear: Start with just 2-3 hidden units and a moderate learning rate. This simple pattern can be learned quickly and helps understand the basic learning process.</li>
+                <li>Circular: Use 4-6 hidden units and a lower learning rate. The network needs to learn a curved boundary, which requires more capacity but benefits from careful learning.</li>
+                <li>XOR: Requires at least 3-4 hidden units to learn the non-linear pattern. This dataset demonstrates why single-layer networks are limited and why hidden layers are crucial.</li>
+                <li>Spiral: The most challenging pattern, requiring 6-8 hidden units and careful training. Use a lower learning rate and be patient as the network learns this complex pattern.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Technical Details</h2>
+            <p>The demo implements a complete neural network from scratch, showcasing the fundamental concepts of deep learning:</p>
+            <ul>
+                <li>Vanilla JavaScript implementation that demonstrates the core algorithms without relying on machine learning libraries. This makes the learning process transparent and educational.</li>
+                <li>React-based user interface that provides real-time visualization of the learning process and interactive controls for experimentation.</li>
+                <li>SVG-based visualizations that clearly show the network's structure, weights, and decision boundaries in real-time.</li>
+                <li>Tailwind CSS for modern, responsive styling that ensures a consistent experience across different devices.</li>
+            </ul>
+
+            <p>The neural network implementation includes several key components:</p>
+            <ul>
+                <li>Mean Squared Error loss function that measures the difference between predictions and actual values, providing a clear metric for learning progress.</li>
+                <li>Gradient descent optimization that efficiently updates the network's weights to minimize the loss function, using the calculated gradients to determine the direction and magnitude of updates.</li>
+                <li>Configurable activation functions (ReLU/Sigmoid) that introduce non-linearity into the network, enabling it to learn complex patterns and make non-linear decisions.</li>
+                <li>Random weight initialization that starts the network with small random values, allowing it to begin learning from a neutral state and preventing symmetry in the hidden layer.</li>
+            </ul>
+        </div>
+
+        <div class="text-center mt-8">
+            <a href="/" class="back-button">Back to Demo</a>
+        </div>
+    </div>
+</body>
+</html> 
