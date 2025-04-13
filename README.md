@@ -1,70 +1,103 @@
-# Getting Started with Create React App
+# Neural Network Visualization Demo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An interactive educational tool for visualizing and understanding how neural networks learn to classify data. This React-based application demonstrates the training process of a simple neural network through various classification tasks.
 
-## Available Scripts
+## 🎯 Learning Objectives
 
-In the project directory, you can run:
+This demo helps you understand:
+- How neural networks learn to classify data
+- The impact of different activation functions (Sigmoid vs ReLU)
+- How network architecture affects learning
+- The concept of decision boundaries
+- Different types of classification problems (linear, circular, XOR, spiral)
 
-### `npm start`
+## 🚀 Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Interactive Training**: Watch the network learn in real-time
+- **Multiple Datasets**: Experiment with different types of classification problems:
+  - Linear separation
+  - Circular separation
+  - XOR problem
+  - Spiral separation
+- **Customizable Parameters**:
+  - Number of hidden units
+  - Learning rate
+  - Activation function (Sigmoid/ReLU)
+- **Visual Feedback**:
+  - Real-time decision boundary visualization
+  - Training progress indicators
+  - Network architecture visualization
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠️ Technical Implementation
 
-### `npm test`
+The project implements a simple neural network with:
+- Input layer (2 neurons)
+- Hidden layer (configurable number of neurons)
+- Output layer (1 neuron)
+- Backpropagation with momentum
+- Support for both Sigmoid and ReLU activation functions
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📦 Installation
 
-### `npm run build`
+1. Clone the repository:
+```bash
+git clone https://github.com/marcelbtec/nndemo.git
+cd nndemo
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Install dependencies:
+```bash
+npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Start the development server:
+```bash
+npm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🎮 How to Use
 
-### `npm run eject`
+1. Select a dataset type from the dropdown menu
+2. Adjust the network parameters:
+   - Number of hidden units
+   - Learning rate
+   - Activation function
+3. Click "Train" to start the learning process
+4. Observe how the decision boundary changes during training
+5. Experiment with different parameters to see their effects
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 📚 Educational Value
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This demo is particularly useful for:
+- Understanding the basics of neural networks
+- Visualizing the learning process
+- Experimenting with different network architectures
+- Learning about activation functions
+- Understanding the challenges of different types of classification problems
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🧠 Key Concepts Demonstrated
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. **Forward Propagation**: How inputs flow through the network
+2. **Backpropagation**: How the network learns from errors
+3. **Decision Boundaries**: How the network separates different classes
+4. **Activation Functions**: The role of different activation functions
+5. **Learning Rate**: How it affects the training process
+6. **Network Architecture**: The impact of hidden layer size
 
-## Learn More
+## 🤝 Contributing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Contributions are welcome! Feel free to:
+- Add new dataset types
+- Implement additional visualization features
+- Improve the educational content
+- Fix bugs or optimize performance
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 📝 License
 
-### Code Splitting
+This project is open source and available under the MIT License.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🙏 Acknowledgments
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Built with React and Create React App
+- Uses Lucide React for icons
+- Inspired by educational neural network visualizations
